@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">รวมบิล</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ 
+  <ion-card>
+    <ion-button   type="submit" routerLink="/activity"  color="primary">เพิ่มกิจกรรม</ion-button>
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of dataitem ">
+        <ion-item (click)="activityshow(item.activity_id, item.cost, item.date, item.note, item.topic)">
+          <ion-icon color="primary" name="easel" slot="start"></ion-icon>
+          <ion-label><h3>กิจกรรม {{item.topic}}</h3></ion-label>
+          <ion-label color = "medium"><h4 >วันที่ {{item.date}} </h4></ion-label>
+        </ion-item>
+        <item></item>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card>
+
+</ion-content>
+<ion-tab-bar color="warning" slot="bottom" color="warning" >
+    
+   
+  <ion-button color="warning"  href="/home" >กลับ</ion-button>
+
+</ion-tab-bar>

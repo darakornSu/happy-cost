@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">รายงาน</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngFor="let item of datacost ">
+<ion-button (click)="showChart(item.total_expend,item.total_revenue,item.total_savings)"><h6>แสดงแผนภูมิ</h6></ion-button>
+</ion-item>
+<div id="chart_div"></div>
+
+<ion-list *ngIf= "showitem"  >
+  <ion-item> 
+    <ion-label  style="text-align:center;"  color="medium" ><h5>แผนภูมิสรุป</h5></ion-label>
+  </ion-item>
+  <ion-item-sliding  *ngFor="let item of datacost ">
+    <ion-item  color="light">
+      <ion-icon color="medium" name="add-circle"  slot=""></ion-icon>
+      <ion-label  color="medium" position="fixed"><h5>ยอดรายรับ</h5></ion-label>
+      <ion-label  color="medium" style="text-align:center;" > {{item.total_revenue | number: fractionSize}} บาท</ion-label>
+    </ion-item>
+    <ion-item  >
+      <ion-icon color="medium" name="remove-circle" slot=""></ion-icon>
+      <ion-label  color="medium" position="fixed"><h5>ยอดรายจ่าย </h5></ion-label>
+      <ion-label style="text-align:center;" color="medium" > {{item.total_expend | number: fractionSize}} บาท </ion-label>
+    </ion-item>
+    <ion-item  color="light">
+      <ion-icon color="medium" name="wallet" slot=""></ion-icon>
+      <ion-label  color="medium" position="fixed"><h5>ยอดเงินออม</h5></ion-label>
+      <ion-label style="text-align:center;" color="medium" > {{item.total_savings | number: fractionSize}} บาท </ion-label>
+    </ion-item>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-item>
+<ion-button color="warning"  (click)="saveAsCSV()" ><h6>Export รายจ่าย เป็นไฟล์ CSV</h6></ion-button>
+</ion-item>
+<ion-item>
+  <ion-button color=""  (click)="saveAsCSV()" ><h6>Export รายรับ เป็นไฟล์ CSV</h6></ion-button>
+  </ion-item>
+</ion-content>
+<ion-tab-bar  color="warning"  slot="bottom"  >
+  <ion-button color="warning"  routerLink="/home" routerDirection="back" ><h5 color="ligth">กลับ</h5></ion-button>
+</ion-tab-bar>

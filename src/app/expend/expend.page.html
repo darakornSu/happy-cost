@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">Happy Cost</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle  color="danger" style="text-align:center;"><h5>บันทึกรายจ่าย</h5></ion-card-subtitle>
+      
+      <ion-list>
+        
+        <ion-item>
+          <ion-icon color="medium" name="remove-circle" slot=""></ion-icon>
+          <ion-label  color="medium" position="fixed"><h5>ยอดเงินรวม</h5></ion-label>
+          <ion-input type="text" value="" [(ngModel)]="postdata.sum_expend"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="medium" name="list" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>หมวดหมู่</h5></ion-label>
+            <ion-label></ion-label>
+            <ion-select color="warning"  [(ngModel)]="postdata.category"  okText="ตกลง" cancelText="ยกเลิก">
+              <ion-select-option value="ซื้อสินค้า" >ชื้อสินค้า</ion-select-option>
+              <ion-select-option value="อาหาร/เครื่องดื่ม" >อาหาร/เครื่องดื่ม</ion-select-option>
+              <ion-select-option value="การเดินทาง" >การเดินทาง</ion-select-option>
+              <ion-select-option value="การลงทุน">การลงทุน</ion-select-option>
+              <ion-select-option value="การศึกษา">การศึกษา</ion-select-option>
+              <ion-select-option value="สุขภาพ">สุขภาพ</ion-select-option>
+              <ion-select-option value="อื่นๆ">อื่นๆ</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngFor="let item of dataitem ">
+          <ion-icon color="medium" name="people" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>บัญชี</h5></ion-label>
+          <ion-input  type="text" color="medium">{{item.username}}</ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-icon  color="medium" name="radio-button-on" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>วันที่</h5></ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="postdata.date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="medium" name="book" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>โน๊ต</h5></ion-label>
+          <ion-input  type="text" value="" [(ngModel)]="postdata.note"></ion-input>
+        </ion-item>
+       
+    
+      </ion-list>
+      <ion-button (click)="save(item)"  type="submit" ion-button secondary style="margin-top: 10%; margin-left: 35%" color="primary">บันทึก</ion-button>
+   
+    </ion-card-header>
+  </ion-card>
+   
+   
+</ion-content>
+
+  <ion-tab-bar slot="bottom" color="warning" >
+    <ion-button color="warning" routerLink="/home" routerDirection="back" >กลับ</ion-button>
+  </ion-tab-bar>
+
+

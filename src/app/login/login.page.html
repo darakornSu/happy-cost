@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="warning" >
+      <ion-title style="text-align:center;" color="light">
+        เข้าสู่ระบบ
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+<ion-list>
+  <ion-item >
+    <p><img style="align-items: center" src="../assets/logo.png"/></p>
+  </ion-item>
+  <ion-item>
+    <ion-label>ชื่อผู้ใช้ : </ion-label>
+    <ion-input type="text" value="" [(ngModel)]="logindata.username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>รหัสผ่าน :</ion-label>
+    <ion-input type="password" value="" [(ngModel)]="logindata.password" ></ion-input>
+  </ion-item>
+</ion-list> 
+<ion-button  style="margin-top: 7%; margin-left: 35%" color="danger" ion-button full (click)="loginUser()">เข้าสู่ระบบ</ion-button>
+</ion-content>
+<ion-tab-bar color="warning" slot="bottom" >
+  <ion-button color="warning"  href="/register" >ลงทะเบียน</ion-button>
+</ion-tab-bar>

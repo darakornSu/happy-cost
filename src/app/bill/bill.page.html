@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">Happy Cost</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card >
+    <ion-card-header >
+      <ion-card-subtitle  color="danger" style="text-align:center;"><h5>บันทึกบิล</h5></ion-card-subtitle>
+      
+      <ion-list>
+        
+        <ion-item >
+          <ion-icon color="medium" name="remove-circle" slot=""></ion-icon>
+          <ion-label   position="fixed"><h5>ยอดเงินรวม</h5></ion-label>
+          <ion-input  [(ngModel)]="postdata.sum_bill" ></ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-icon color="medium" name="list" slot=""></ion-icon>
+          <ion-label  position="fixed"><h5>หมวดหมู่</h5></ion-label>
+            <ion-label></ion-label>
+            <ion-select  [(ngModel)]="postdata.category"  okText="ตกลง" cancelText="ยกเลิก">
+              <ion-select-option value="บิลค่าไฟ" >บิลค่าไฟ</ion-select-option>
+              <ion-select-option value="บิลค่าอินเตอร์เน็ต" >บิลค่าอินเตอร์เน็ต</ion-select-option>
+              <ion-select-option value="บิลค่าเดินทาง" >บิลค่าเดินทาง</ion-select-option>
+              <ion-select-option value="บิลค่าน้ำ">บิลค่าน้ำ</ion-select-option>
+              <ion-select-option value="บิลการศึกษา">บิลการศึกษา</ion-select-option>
+              <ion-select-option value="บิลค่างวด">บิลค่างวด</ion-select-option>
+              <ion-select-option value="บิลค่ารักษาสุขภาพ">บิลค่ารักษาสุขภาพ</ion-select-option>
+              <ion-select-option value="บิลค่าบริการอื่นๆ">บิลค่าบริการอื่นๆ</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngFor="let item of dataitem ">
+          <ion-icon color="medium" name="people" slot=""></ion-icon>
+          <ion-label  position="fixed"><h5>บัญชี</h5></ion-label>
+          <ion-input   type="text" color="medium">{{item.username}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon  color="medium" name="radio-button-on" slot=""></ion-icon>
+          <ion-label  position="fixed"><h5>วันที่ต้องชำระ</h5></ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="postdata.date"></ion-datetime>
+        </ion-item>
+        <ion-item >
+          <ion-icon color="medium" name="book" slot=""></ion-icon>
+          <ion-label  position="fixed"><h5>โน๊ต</h5></ion-label>
+          <ion-input  type="text" value="" [(ngModel)]="postdata.note"></ion-input>
+        </ion-item>
+       
+    
+      </ion-list>
+      <ion-button  (click)="savebill(item)"   type="submit" ion-button secondary style="margin-top: 10%; margin-left: 35%" color="danger">บันทึก</ion-button>
+      
+    </ion-card-header>
+  </ion-card>
+   
+</ion-content>
+  <ion-tab-bar color="warning" slot="bottom" >
+    <ion-button color="warning"  href="/sum-bill" >กลับ</ion-button>
+  </ion-tab-bar>
+
+

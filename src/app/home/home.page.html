@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar  color="warning" >
+    <ion-title style="text-align:center;" color="light">Happy Cost</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let item of datacost ">
+    <ion-card-header>
+      <ion-card-subtitle>ยอดเงิน</ion-card-subtitle>
+      <ion-card-title  color="warning"><b>{{item.total_sum | number: fractionSize}} บาท</b></ion-card-title>
+      <ion-item>
+        <ion-icon color="primary" name="radio-button-on" slot="start"></ion-icon>
+        <ion-label color="success">{{item.total_revenue | number: fractionSize}} บาท</ion-label>
+        <ion-button color="success" fill="outline" slot="end">รายรับ</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="primary" name="radio-button-on" slot="start" ></ion-icon>
+        <ion-label color="danger">{{item.total_expend | number: fractionSize}} บาท</ion-label>
+        <ion-button  color="danger" fill="outline" slot="end">รายจ่าย</ion-button>
+      </ion-item>
+      <ion-item  *ngFor="let items of datasum_expend">
+        <ion-button  style="zoom:1.1;" color="primary" fill="outline"> รายจ่ายในวันนี้  {{items.sum_expend | number: fractionSize}} บาท</ion-button>
+        <ion-icon color="danger" name="heart-half-outline" slot="end" ></ion-icon>
+      </ion-item>
+    </ion-card-header>
+  </ion-card>
+  <ion-card  *ngFor="let item of datacost " >
+    <ion-card-header color="warning">
+        <ion-icon color="secondary" name="radio-button-on" slot="start" ></ion-icon>
+        <ion-label color="light" >เงินออม {{item.total_savings | number: fractionSize}} บาท </ion-label>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <ion-list>
+        <ion-item *ngFor="let item of dataitem ">
+          <ion-icon color="danger" name="cash-sharp" slot="start"></ion-icon>
+          <ion-label><h3>{{item.category}}</h3></ion-label>
+          <p >{{item.sum_expend | number: fractionSize}} บาท</p>
+        </ion-item>
+        <ion-item *ngFor="let item of dataitemrevenue ">
+          <ion-icon color="success" name="wallet-sharp" slot="start"></ion-icon>
+          <ion-label><h3>{{item.category}}</h3></ion-label>
+          <p >{{item.sum_revenue | number: fractionSize}} บาท</p>
+        </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-fab   *ngFor="let item of databoard " vertical="top" horizontal="end" slot="fixed" >
+    <ion-fab-button routerLink="/board" color="warning">
+      <ion-label color="danger">{{item.rowcount}}</ion-label>
+      <ion-icon color="light" name="chatbox"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom" color="warning" >
+    <ion-tab-button (click)="gotoRevenue()">
+      <ion-label color ="success" ><h1 style="zoom:1.5;" >+</h1></ion-label>
+    </ion-tab-button>
+    <ion-tab-button >
+      <img  style="zoom:4;" style="align-items: center" src="../assets/logo.png"/>
+      <ion-label color="light" >SCAN</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="gotoExpend()" >
+      <ion-label color="warning"  color="danger" ><h1  style="zoom:1.5;">-</h1></ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

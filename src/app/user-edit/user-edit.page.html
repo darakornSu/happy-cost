@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light"></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-grid>
+     <ion-row>
+    <ion-col>
+    <ion-item>
+      <h4>แกไขข้อมูลผู้ใช้</h4>
+    </ion-item> 
+    <ion-item>
+    <ion-icon style="zoom:3;" color = "success" name="person"></ion-icon>
+    </ion-item> 
+    <ion-card-content>
+            <ion-list *ngFor="let item of dataitem">
+              <ion-item >
+                <ion-icon color="medium" slot=""></ion-icon>
+                <ion-label color="medium" position="fixed"><h5>ชื่อ</h5></ion-label>
+                <ion-input  type="text" value=""  [(ngModel)]="postdata.username"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-icon color="medium" slot=""></ion-icon>
+                <ion-label color="medium" position="fixed"><h5>Email</h5></ion-label>
+                <ion-input  type="text" value="" [(ngModel)]="postdata.email"></ion-input>
+              </ion-item>
+           
+            <ion-button (click)="updateuser(item.user_id)" type="submit" ion-button secondary style="margin-top: 10%; margin-left: 36%" color="primary">บันทึก</ion-button>
+          </ion-list>
+      
+    </ion-card-content>
+    </ion-col>
+     </ion-row>
+    </ion-grid>
+  
+  </ion-card>
+</ion-content>
+<ion-tab-bar  color="warning"  slot="bottom"  >
+  <ion-button color="warning"  routerLink="/home" routerDirection="back" ><h5 color="ligth">กลับ</h5></ion-button>
+</ion-tab-bar>

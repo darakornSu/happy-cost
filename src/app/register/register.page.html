@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title>
+      ลงทะเบียน
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-list>
+<ion-icon  color="dark" style="margin-top: 7%; margin-left: 47%"  name="person"></ion-icon>
+<ion-item>
+  <ion-label>ชื่อผู้ใช้ :</ion-label>
+  <ion-input type="text" value="" [(ngModel)]="registerdata.username"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>อีเมล :</ion-label>
+  <ion-input type="text" value="" [(ngModel)]="registerdata.email"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>รหัสผ่าน : </ion-label>
+  <ion-input type="password" value="" [(ngModel)]="registerdata.password" ></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>ยืนยันรหัสผ่าน : </ion-label>
+  <ion-input type="password" value="" [(ngModel)]="registerdata.password2" ></ion-input>
+</ion-item>
+</ion-list> 
+<ion-button  style="margin-top: 7%; margin-left: 35%" ion-button full (click)="registerUser()">ลงทะเบียน</ion-button>
+</ion-content>
+<ion-tab-bar color="warning" slot="bottom" >
+  <ion-button color="warning"  href="/login" >เข้าสู่ระบบ</ion-button>
+</ion-tab-bar>

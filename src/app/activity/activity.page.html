@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">กิจกรรม</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+      <ion-card>
+      <ion-card-subtitle   style="text-align:center;" color="primary"><h5>บันทึกกิจกรรม</h5></ion-card-subtitle>
+      
+      <ion-list>
+        <ion-item>
+          <ion-icon color="primary" name="easel" slot=""></ion-icon>
+          <ion-label  color="medium" position="fixed"><h5>ชื่อกิจกรรม</h5></ion-label>
+          <ion-input type="text" value="" [(ngModel)]="postdata.topic"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="primary" name="add-circle" slot=""></ion-icon>
+          <ion-label  color="medium" position="fixed"><h5>ค่าใช้จ่าย</h5></ion-label>
+          <ion-input type="text" value="" [(ngModel)]="postdata.cost"></ion-input>
+        </ion-item>
+        <ion-item *ngFor="let item of dataitem ">
+          <ion-icon color="primary" name="people" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>บัญชี</h5></ion-label>
+          <ion-input  type="text" color="medium">{{item.username}}</ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-icon  color="primary" name="radio-button-on" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>วันที่</h5></ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="postdata.date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="primary" name="book" slot=""></ion-icon>
+          <ion-label color="medium" position="fixed"><h5>โน๊ต</h5></ion-label>
+          <ion-textarea type="text" value="" [(ngModel)]="postdata.note"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label color="medium" position="fixed"><h5></h5></ion-label>
+        </ion-item>
+       
+    
+      </ion-list>
+    </ion-card>
+      <ion-button (click)="save()"  type="submit" ion-button secondary style="margin-top: 10%; margin-left: 40%" color="primary">บันทึก</ion-button>
+</ion-content>
+
+  <ion-tab-bar color="warning"  slot="bottom" >
+    <ion-button color="warning"  href="/home" >กลับ</ion-button>
+  </ion-tab-bar>
+
+

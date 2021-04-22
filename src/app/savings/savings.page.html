@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">เงินออม</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-grid>
+     <ion-row>
+    <ion-col>
+    <ion-item  >
+      <h4 color="warning">ยอดเงินออม</h4>
+    </ion-item> 
+    <ion-item *ngFor="let item of datacost " >
+    
+    <ion-icon style="zoom:3;" color="success" name="wallet"></ion-icon>
+    <p>{{item.total_savings | number: fractionSize}}  บาท</p>
+    </ion-item> 
+ 
+    <ion-list>
+      <ion-item>
+        <ion-icon color="medium" name="add-circle" slot=""></ion-icon>
+        <ion-label  color="medium" position="fixed"><h5>ใส่จำนวนเงิน</h5></ion-label>
+        <ion-input type="text" value="" [(ngModel)]="postdata.total_savings"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="success"  (click)="save()">เพิ่มเงินออม</ion-button>
+    <ion-button color="warning"  (click)="btdeletesavings()" >ล้างเงินอ้อม</ion-button>
+    
+  </ion-col>
+     </ion-row>
+    </ion-grid>
+  
+  </ion-card>
+</ion-content>
+<ion-tab-bar  color="warning"  slot="bottom"  >
+  <ion-button color="warning"  routerLink="/home" routerDirection="back" ><h5 color="ligth">กลับ</h5></ion-button>
+</ion-tab-bar>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">รวมบิล</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ 
+  <ion-card>
+    <ion-button   type="submit" routerLink="/bill"  color="danger">เพิ่มบิล</ion-button>
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of dataitem ">
+        <ion-item (click)="billshow(item.bill_id, item.sum_bill, item.category, item.date, item.note, item.status)">
+          <ion-icon color="warning" name="receipt-sharp" slot="start"></ion-icon>
+          <ion-label><h3>{{item.category}}</h3></ion-label>
+          <p >{{item.sum_bill | number: fractionSize}} บาท  </p>
+          <ion-label color = "medium"><h4 >. {{item.status}}</h4></ion-label>
+        </ion-item>
+        <item></item>
+        <ion-item-options  side="end">
+            <button color = "danger" (click)="btdelete(item.bill_id)"> <ion-icon color = "danger"  name="trash"></ion-icon>ลบ </button>
+            <button (click)="confirmbill(item.bill_id)"> <ion-icon  color = "warning"  name="checkmark-circle"></ion-icon>ยืนยันการชำระ </button>
+            
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card>
+
+
+</ion-content>
+<ion-tab-bar color="warning" slot="bottom" color="warning" >
+    
+   
+  <ion-button color="warning"   routerLink="/home" routerDirection="back" >กลับ</ion-button>
+
+</ion-tab-bar>

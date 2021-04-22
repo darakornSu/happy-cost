@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="warning" >
+    <ion-title style="text-align:center;" color="light">Happy Cost</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+ <ion-card>
+<ion-card-header>
+  <ion-card-subtitle  color="success" style="text-align:center;"><h5>บันทึกรายรับ</h5></ion-card-subtitle>
+    <ion-list>
+      <ion-item>
+        <ion-icon color="medium" name="remove-circle" slot=""></ion-icon>
+        <ion-label  color="medium" position="fixed"><h5>ยอดเงินรวม</h5></ion-label>
+        <ion-input type="text" value="" [(ngModel)]="postdata.sum_revenue"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="medium" name="list" slot=""></ion-icon>
+        <ion-label color="medium" position="fixed"><h5>หมวดหมู่</h5></ion-label>
+          <ion-label></ion-label>
+          <ion-select  [(ngModel)]="postdata.category" okText="ตกลง" cancelText="ยกเลิก">
+            <ion-select-option color="success"  value="เงินเดือน" >เงินเดือน</ion-select-option>
+            <ion-select-option color="success" value="ยอดขาย" >ยอดขาย</ion-select-option>
+            <ion-select-option color="success" value="โบนัส" >โบนัส</ion-select-option>
+            <ion-select-option color="success"  value="เงินดอกเบี้ย">เงินดอกเบี้ย</ion-select-option>
+            <ion-select-option color="success" value="ของขวัญ">ของขวัญ</ion-select-option>
+            <ion-select-option color="success" value="อื่นๆ">อื่นๆ</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item *ngFor="let item of dataitem ">
+        <ion-icon color="medium" name="people" slot=""></ion-icon>
+        <ion-label color="medium" position="fixed"><h5>บัญชี</h5></ion-label>
+        <ion-input  type="text" color="medium">{{item.username}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon  color="medium" name="radio-button-on" slot=""></ion-icon>
+        <ion-label color="medium" position="fixed"><h5>วันที่</h5></ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY"  [(ngModel)]="postdata.date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="medium" name="book" slot=""></ion-icon>
+        <ion-label color="medium" position="fixed"><h5>โน๊ต</h5></ion-label>
+        <ion-input  type="text" value="" [(ngModel)]="postdata.note"></ion-input>
+      </ion-item>
+     
+    </ion-list>
+    <ion-button (click)="saverevenue(item)" type="submit" ion-button secondary style="margin-top: 10%; margin-left: 36%" color="primary">บันทึก</ion-button>
+</ion-card-header>
+ </ion-card>
+</ion-content>
+
+  <ion-tab-bar slot="bottom" color="warning" >
+    <ion-button color="warning"  routerLink="/home" routerDirection="back">กลับ</ion-button>
+  </ion-tab-bar>
+
+
